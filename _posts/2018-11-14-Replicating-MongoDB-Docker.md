@@ -3,7 +3,7 @@ layout: post
 title: Replicating MongoDB databases to and from running containers
 ---
 
-This post builds off  Kynan Rilee’s technique in (Mount volumes into a running container)[https://medium.com/kokster/mount-volumes-into-a-running-container-65a967bee3b5] from 2017 to mount volumes.
+This post builds off  Kynan Rilee’s technique in [this blog post](https://medium.com/kokster/mount-volumes-into-a-running-container-65a967bee3b5) from 2017 to mount volumes.
 We assume in this guide you are familiar with docker layers. If not, checkout our blog post on what Docker layers are and how they work [here](https://blog.bawkbox.com/docker-layers)
 
 ## Disclaimer
@@ -40,7 +40,7 @@ ln -s /usr/local/lib/docker-enter/docker-enter /usr/local/bin/docker-enter
 ### 1. Create folder on your host machine that will link to your volume
 ```
 mkdir ~/testvolume
-REALPATH=~/testvolume
+REALPATH=~/testvolume†
 ```
 
 ### 2. We then want to figure out which filesystem (on the host) contains your folder
