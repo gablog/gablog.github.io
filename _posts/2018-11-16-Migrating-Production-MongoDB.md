@@ -12,19 +12,19 @@ To ensure high SLA and prevent any mistakes from causing downtime with your cust
 **Note**: This guide assumes you have mongo and docker installed in your environment
 
 ### 1. Get a snapshot of your production database with mongodump
-```
+`
 mongodump --out /opt/backups/mongodb --host url_of_your_db --port port_of_your_db  --db your_db  
-```
+`
 
 ### 2. Create Docker mongodb container 
-```
+`
 docker run --volume=/opt/backups/:/mongodb_backups/ --name migrationTest -d mongo:latest
-```
+`
 
 ### 3. Restore data into local mongodb database 
-```
+`
 docker exec -it migrationTest bash -c “mongorestore /mongodb_backups/mongodb_dump”
-```
+`
 
 ## Create your migration script
 For purposes of this tutorial, we will be assuming our data includes one collection called “pets”, and inside that collection we want to change the breed property to “labradoodle” if the pet is over the age of 5. We will be performing a migration that strips the urls of their protocol (if it the url has it).
@@ -68,9 +68,9 @@ module.exports = {
 ```
 
 ### 4. Initialize a new migration script
-```
+`
 $ migrate-mongo create remove_labradoodles
-```
+`
 
 ### 5. Write your migration script
 **Note**: It is important to add data to ensure that you can rollback your migration in case it causes any unexpected problems during production rollout.
@@ -89,7 +89,7 @@ module.exports = {
 ### 6. Create migration test
 Before running our migration, we want to make sure we can validate that it works as expected. To do so, we will create a short script to query the database and make sure that the data has been modified as we intended.
 
-```validate_migration.js
+```
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
  
@@ -132,17 +132,17 @@ MongoClient.connect(url, function(err, client) {
 ```
 
 ### 5. Run your migration script
-```  migrate-mongo up ```
+` migrate-mongo up `
 
 ### 6. Validate your migration
-```  node validate_migration.js ```
+` node validate_migration.js `
 Assuming nothing has gone wrong and assert does not throw any errors our migration was successful!
 
 However if you do happen to run into errors, you can run ` migrate-mongo down ` to rollback the migration.
 
 ## Deploying our Migration 
 Before we start deploying our migration script, we first need to make it our validation script runnable from JS.
-```testmigration_deployment.js
+```
 
 const MongoClient = require('mongodb').MongoClient;
  
@@ -181,7 +181,7 @@ module.exports = {
 ```
 
 We then need to automate our migration steps into a script by using with migrate-mongo’s API.
-```run_migration.js
+```
 const {
   init,
   create,
