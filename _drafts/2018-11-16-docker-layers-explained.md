@@ -26,6 +26,8 @@ During this process you have to wait for each pull to complete before going on t
 
 This is why when on subsequent pulls of an image, these layers seem to be cached for you.
 
+## How they work with Docker Images
+
 As seen in the image below, each Docker image is comprised of multiple layers. In this case our Docker container contains a Ubuntu base layer, a Ubuntu update layer, an Apache layer and a customer user defined layer
 
 ![](https://images.techhive.com/images/article/2016/06/docker-image-layers-100664051-large.idge.png)
