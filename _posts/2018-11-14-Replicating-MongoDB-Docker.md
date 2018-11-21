@@ -4,7 +4,7 @@ title: Replicating MongoDB databases to and from running containers
 ---
 
 This post builds off  Kynan Rilee’s technique in [this blog post](https://medium.com/kokster/mount-volumes-into-a-running-container-65a967bee3b5) from 2017 to mount volumes.
-We assume in this guide you are familiar with docker layers. If not, checkout our blog post on what Docker layers are and how they work [here](https://blog.bawkbox.com/docker-layers)
+We assume in this guide you are familiar with docker layers. If not, checkout our blog post on what Docker layers are and how they work [here](/what-are-docker-layers)
 
 ## Disclaimer
 Following this guide is assumed to be at your own risk. Before running this on any production database please make sure to run it on a test database. We also advise before doing anything with your production database, make a snapshot of your current data in case something goes awry.
